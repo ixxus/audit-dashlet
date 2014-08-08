@@ -199,7 +199,12 @@ if (typeof Extras.dashlet == "undefined" || !Extras.dashlet)
          * @type string
          * @default ""
          */
-         trim_audit_paths: ""
+         trim_audit_paths: "",
+         
+         /**
+          * site dashboard for dashlet (if available)
+          */
+         site: ""
 
       },
 
@@ -569,6 +574,7 @@ if (typeof Extras.dashlet == "undefined" || !Extras.dashlet)
          var limitQuery            = this.options.limit            ? "&limit="          + encodeURI(this.options.limit)            : "";
          var auditPathFilterQuery  = this.options.pathFilter       ? "&pathFilter="     + encodeURI(this.options.pathFilter)       : "";
          var trimAuditPathsQuery   = this.options.trim_audit_paths ? "&trimAuditPaths=" + encodeURI(this.options.trim_audit_paths) : "";
+         var siteQuery             = this.options.site             ? "&site="           + encodeURI(this.options.site)             : "";
 
          // add in any optional server side query param. since they will be separated by a '&', encode it with an unassignable
          // unicode code point. it will be decoded by the data webscript that will perform the actual audit API query call.
@@ -580,7 +586,7 @@ if (typeof Extras.dashlet == "undefined" || !Extras.dashlet)
          // Its response will, as a 1st step, filter out the audit application path to keep the key only for dashlet readability
          var dataSourceURI=Alfresco.constants.URL_SERVICECONTEXT
             +  "components/dashlets/audit-application/entries?application="
-            + encodeURI(this.options.application) + auditValueFilterQuery + limitQuery + auditPathFilterQuery + trimAuditPathsQuery + additionalQueryParams;
+            + encodeURI(this.options.application) + auditValueFilterQuery + limitQuery + auditPathFilterQuery + trimAuditPathsQuery + additionalQueryParams + siteQuery;
 
          var myDataSource = new YAHOO.util.DataSource(dataSourceURI);
 

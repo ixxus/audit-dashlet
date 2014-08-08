@@ -38,11 +38,12 @@ function main()
          logger.log("  optionalAdditionalQueryParams: '" +optionalAdditionalQueryParams+ "'");
 
       var sortOrder =  "&forward=" + false; // most recent first
+      var siteQuery = args.site != null ? "&site=" + args.site : ""; // XXX: CLTMVP-1051
 
       // build the query URL using all the required parameters and perform the request.
       // Note optionalAdditionalQueryParams is unencoded, pending the ability to call the urlEncoder with reserveUriChars set to true.
-      var uri = "/api/audit/query/"+stringUtils.urlEncode(application) +  "/" + pathFilterQuery +"?verbose=true"
-                  + optionalAdditionalQueryParams + valueFilterQuery + maxEntryCount + sortOrder;
+      var uri = "/cengage/api/audit/query/"+stringUtils.urlEncode(application) +  "/" + pathFilterQuery +"?verbose=true"
+                  + optionalAdditionalQueryParams + valueFilterQuery + maxEntryCount + sortOrder + siteQuery;
 
       var connector = remote.connect("alfresco");
       var result = connector.get(uri);

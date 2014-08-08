@@ -18,7 +18,8 @@
       show_user_column: "${escape_quotes(args.show_user_column!'show')}",
       show_time_column: "${escape_quotes(args.show_time_colum!'show')}",
       show_values_column: "${escape_quotes(args.show_values_column!'show')}",
-      trim_audit_paths: "${escape_quotes(args.trim_audit_paths!'true')}"
+      trim_audit_paths: "${escape_quotes(args.trim_audit_paths!'true')}",
+      site : "${escape_quotes(page.url.templateArgs.site!'')}"
 
    }).setMessages(${messages});
 
@@ -45,7 +46,7 @@
             <a class="theme-color-1" href="${msg("audit.dashlet.link.help.url")}" id="${el}-help-link" target="_blank">${msg("audit.dashlet.link.help")}</a>
          </span>
 
-         <#if userHasConfigPermission && userIsAdmin>
+         <#if userIsAdmin && userHasConfigPermission>
          <#-- for some reason, ie6 ignores the inherited left padding of the link -- wrap in a specific span if on ie6 -->
          <!--[if IE 6]>   <span class="audit-application-dashlet-spaced-left"> <![endif]-->
          <span>
@@ -57,7 +58,7 @@
    </div>
 
    <#-- audit only allows admin to query audit entries. Therefore the dashlet is only usable by admin users. -->
-   <#if userIsAdmin>
+   <#if userHasViewPermission>
       <#assign currentHeight=default_height>
       <#if args.height??><#assign currentHeight=args.height></#if>
          <div class="body" style="height: ${currentHeight}px;" id="${el}-body">
