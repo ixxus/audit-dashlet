@@ -11,7 +11,7 @@
     <artifactId>audit-application-dashlet</artifactId>
     <packaging>jar</packaging>
     <name>Audit Application Dashlet</name>
-    <version>4.2.1.0.0.1-SNAPSHOT</version>
+    <version>4.2.1.0.0.1</version>
     <description>
         Ixxus (Mavenised) fork of https://github.com/share-extras/audit-dashlet
     </description>
@@ -32,7 +32,7 @@
         <connection>scm:git:git@github.com:ixxus/audit-dashlet.git</connection>
         <developerConnection>scm:git:git@github.com:ixxus/audit-dashlet.git</developerConnection>
         <url>https://github.com/ixxus/audit-dashlet.git</url>
-        <tag>HEAD</tag>
+        <tag>audit-application-dashlet-4.2.1.0.0.1</tag>
     </scm>
     <pluginRepositories>
         <pluginRepository>
